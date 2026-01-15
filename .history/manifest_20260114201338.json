@@ -1,0 +1,11 @@
+{
+	"id": "obsidian-tool",
+	"name": "Obsidian Tool",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "My tool plugin for Obsidian. As another tool in vscode can link.",
+	"author": "Obsidian",
+	"authorUrl": "https://obsidian.md",
+	"fundingUrl": "https://obsidian.md/pricing",
+	"isDesktopOnly": false
+}

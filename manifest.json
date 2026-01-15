@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-tool",
+	"name": "Obsidian Tool",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Jump between Obsidian and VS Code seamlessly using URL schemes.",
+	"author": "mmschzs",
+	"authorUrl": "",
+	"isDesktopOnly": true
+}
