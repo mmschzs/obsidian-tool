@@ -1,90 +1,114 @@
-# Obsidian Sample Plugin
+# Obsidian Tool
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+一个强大的 Obsidian 插件，让您可以在 Obsidian 和 VS Code 之间无缝切换，使用 URL 方案实现高效的跨应用工作流。
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+## 功能特性
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+- **跨应用导航**: 使用 URL 方案在 Obsidian 和 VS Code 之间快速切换
+- **文件同步**: 轻松在两个应用间打开相同的文件
+- **工作流优化**: 专为需要在 Obsidian 中做笔记、在 VS Code 中编码的用户设计
+- **快捷操作**: 通过命令面板快速访问常用功能
 
-## First time developing plugins?
+## 安装方法
 
-Quick starting guide for new plugin devs:
+### 从社区插件市场安装
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+1. 打开 Obsidian 设置 → 社区插件
+2. 浏览社区插件
+3. 搜索 "Obsidian Tool"
+4. 点击安装并启用
 
-## Releasing new releases
+### 手动安装
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+1. 下载最新版本的插件文件
+2. 将 `main.js`、`styles.css` 和 `manifest.json` 复制到您的库文件夹 `.obsidian/plugins/obsidian-tool/`
+3. 在 Obsidian 设置中启用插件
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+## 使用方法
 
-## Adding your plugin to the community plugin list
+### 基本用法
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+1. 在 Obsidian 中，使用命令面板 (`Ctrl/Cmd+P`) 搜索 "Obsidian Tool" 相关命令
+2. 选择相应的命令在 VS Code 中打开当前文件
+3. 在 VS Code 中，可以通过配置的 URL 方案返回到 Obsidian
 
-## How to use
+### URL 方案
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+插件支持以下 URL 方案：
+- `obsidian://open?file=filename` - 在 Obsidian 中打开指定文件
+- `vscode://file/path/to/file` - 在 VS Code 中打开指定文件
 
-## Manually installing the plugin
+## 开发环境
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+此项目使用 TypeScript 开发，提供类型检查和文档支持。
 
-## Improve code quality with eslint
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- This project already has eslint preconfigured, you can invoke a check by running`npm run lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
+### 开发设置
 
-## Funding URL
+1. 确保您的 Node.js 版本至少为 v16 (`node --version`)
+2. 克隆此仓库
+3. 运行 `npm i` 安装依赖
+4. 运行 `npm run dev` 启动编译监听模式
 
-You can include funding URLs where people who use your plugin can financially support it.
+## 配置选项
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+插件提供以下配置选项：
 
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
-```
+- **VS Code 路径**: 设置 VS Code 可执行文件的路径
+- **默认行为**: 选择在 VS Code 中打开文件时的默认行为
+- **快捷键**: 自定义快捷键绑定
 
-If you have multiple URLs, you can also do:
+## 故障排除
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
+### 常见问题
 
-## API Documentation
+1. **VS Code 无法打开文件**
+   - 检查 VS Code 路径配置是否正确
+   - 确保 VS Code 已添加到系统 PATH
 
-See https://docs.obsidian.md
+2. **URL 方案不工作**
+   - 确保已正确注册 URL 方案
+   - 检查系统是否允许应用处理自定义 URL
+
+3. **插件无法加载**
+   - 检查 Obsidian 版本兼容性
+   - 查看 Obsidian 控制台的错误信息
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 此仓库
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+## 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+
+## 更新日志
+
+### v1.0.0
+- 初始版本发布
+- 基本的 Obsidian 和 VS Code 之间切换功能
+- URL 方案支持
+
+## 支持
+
+如果您遇到问题或有功能建议，请：
+
+1. 查看 [常见问题](#故障排除) 部分
+2. 搜索现有的 [Issues](https://github.com/mmschzs/obsidian-tool/issues)
+3. 创建新的 Issue 描述您的问题或建议
+
+## 致谢
+
+- 感谢 Obsidian 团队提供了优秀的插件 API
+- 感谢所有贡献者和用户的反馈
+
+## 链接
+
+- [Obsidian 官网](https://obsidian.md)
+- [Obsidian 插件开发文档](https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin)
+- [VS Code 官网](https://code.visualstudio.com/)
